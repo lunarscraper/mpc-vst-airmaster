@@ -1,0 +1,15 @@
+{
+  "_comment": "Not a real Schwung module -- chain_params lists the VST parameters so mpc-vst-plugins tools/gen_vst.py can generate params.h + the skin. Keys must match AW_KEYS in the _vst.cpp. Start values come from Airwindows itself. Only append, never reorder.",
+  "chain_params": [
+    { "key": "sidepass", "name": "Sidepass", "min": 0, "max": 100 },
+    { "key": "glue",    "name": "Glue",     "min": 0, "max": 100 },
+    { "key": "scope",   "name": "Scope",    "min": 0, "max": 100 },
+    { "key": "skronk",  "name": "Skronk",   "min": 0, "max": 100 },
+    { "key": "girth",   "name": "Girth",    "min": 0, "max": 100 },
+    { "key": "drive",   "name": "Drive",    "min": 0, "max": 100 },
+    { "key": "dither",  "name": "Dither",   "options": ["DARK", "TEN NINES", "TPDF WIDE", "PAUL WIDE", "NJAD", "BYPASS"] },
+    { "key": "slot",    "name": "Preset",   "min": 1, "max": 32 },
+    { "key": "load",    "name": "Load",     "access": "write" },
+    { "key": "save",    "name": "Save",     "access": "write" }
+  ]
+}
