@@ -1,0 +1,46 @@
+name: VST release (draft)
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version, e.g. 0.1.0
+        required: true
+        default: 0.1.0
+      dry_run:
+        description: Build only (zip + skin previews as run artifacts), no draft release
+        type: boolean
+        default: true
+
+jobs:
+  mastering:
+    uses: sd88me/mpc-vst-plugins/.github/workflows/vst-release.yml@259f75d0ce0f836cfd89cc0a33c550b55917cffc
+    permissions:
+      contents: write
+    with:
+      tag: mastering-vst-v${{ inputs.version }}
+      version: ${{ inputs.version }}
+      tools_ref: 259f75d0ce0f836cfd89cc0a33c550b55917cffc
+      vst_dir: mastering
+      build: bash mastering/build.sh
+      host_test: bash mastering/test.sh
+      plugin_id: mastering
+      license: MIT
+      about: Airwindows Mastering (insert effect) - Glue, Scope, Skronk, Girth, Drive and 24-bit dither. Unmodified Airwindows DSP by Chris Johnson.
+      dry_run: ${{ inputs.dry_run }}
+
+  mastering2:
+    uses: sd88me/mpc-vst-plugins/.github/workflows/vst-release.yml@259f75d0ce0f836cfd89cc0a33c550b55917cffc
+    permissions:
+      contents: write
+    with:
+      tag: mastering2-vst-v${{ inputs.version }}
+      version: ${{ inputs.version }}
+      tools_ref: 259f75d0ce0f836cfd89cc0a33c550b55917cffc
+      vst_dir: mastering2
+      build: bash mastering2/build.sh
+      host_test: bash mastering2/test.sh
+      plugin_id: mastering2
+      license: MIT
+      about: Airwindows Mastering2 (insert effect) - Mastering plus Sidepass (elliptical EQ, bass in the side channel cut). Unmodified Airwindows DSP by Chris Johnson.
+      dry_run: ${{ inputs.dry_run }}
